@@ -16,6 +16,6 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Print Azure Subscription ID
-        run: az account show --query 'id' -o tsv
+      - name: Print Azure credentials
+  run: echo "${{ secrets.AZURE_CREDENTIALS }}"
+    
