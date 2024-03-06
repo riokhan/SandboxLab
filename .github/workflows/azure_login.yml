@@ -1,1 +1,21 @@
-Tsest
+name: Azure Login
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  azure-login:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Print Azure Subscription ID
+        run: az account show --query 'id' -o tsv
