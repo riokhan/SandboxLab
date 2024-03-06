@@ -1,20 +1,19 @@
-name: Create Azure Resource Group
 
-on:
-  push:
-    branches:
-      - main
+# File: .github/workflows/workflow.yml
+
+on: 
+  workflow_dispatch:
+
+name: AzureLoginSample
       
 jobs:
-  connect-to-azure:
+
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: Azure/login@v1
+      - uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZURE_SP_CLIENT_ID }}
-          client-secret: ${{ secrets.AZURE_SP_CLIENT_SECRET }}
-          tenant-id: ${{ secrets.AZURE_SP_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SP_SUBSCRIPTION_ID }}
-      - name: Run Azure commands using the authenticated identity
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
         run: |
-          az resource list
+          az webapp list --query "|?state=='Running']
