@@ -1,5 +1,10 @@
 name: Create Azure Resource Group
 
+on:
+  push:
+    branches:
+      - main
+      
 jobs:
   connect-to-azure:
     runs-on: ubuntu-latest
