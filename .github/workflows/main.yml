@@ -1,8 +1,7 @@
 
 # File: .github/workflows/workflow.yml
 
-on: 
-  workflow_dispatch:
+on: [push]
 
 name: AzureLoginSample
       
@@ -11,9 +10,10 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: azure/login@v1
+      - name: Login to Azure
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-        
+      - name: Get Webapp list
         run: |
           az webapp list --query "[?state=='Running']"
