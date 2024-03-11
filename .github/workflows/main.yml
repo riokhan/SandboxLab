@@ -7,10 +7,6 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Azure login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -20,7 +16,7 @@ jobs:
         run: az group create --name TestSandbox --location eastus
 
       - name: DeployBiceptemplates
-        run: az deployment sub create -l eastus -f CreateRG.bicep
+        run: az deployment sub create -l eastus -f 'CreateRG.bicep'
 
        
      
