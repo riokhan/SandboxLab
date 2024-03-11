@@ -13,7 +13,7 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           auth-type: SERVICE_PRINCIPAL
       - name: Create lab
-        run: az deployment group create --resource-group TestSandbox --template-file CreateRG.bicep --parameters labName=AzureLabs vmName=AzureVMsTest userName=pjagan
+        run: az deployment group create --resource-group TestSandbox --template-file '../actions/bicep/CreateRG.bicep' --parameters labName=AzureLabs vmName=AzureVMsTest userName=pjagan
 
 
 
