@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+     # we need to provide name for creating azure Resource group, add location for deployment
       AZURE_RESOURCEGROUP_NAME: TestingSandbox1
       LOCATION: eastus
-      ENVIRONMENT: nonprod
-
+     
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -23,7 +23,9 @@ jobs:
 
       - name: Create Resource Group and Deploy Resources
         run: |
+           # Create a Resource Group
            az group create --name $AZURE_RESOURCEGROUP_NAME --location $LOCATION
+           # Create a DevTestLab env and Virtual machine using Bicep code
            az deployment group create --resource-group $AZURE_RESOURCEGROUP_NAME --template-file './actions/bicep/CreateRG.bicep' --parameters labName=AzureLabs2 vmName=AzureVMsTest2 userName=pjagan password=12345@abc
 
 
