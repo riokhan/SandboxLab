@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      AZURE_RESOURCEGROUP_NAME: newtest1234
+      AZURE_RESOURCEGROUP_NAME: TestingSandbox1
       LOCATION: eastus
       ENVIRONMENT: nonprod
 
@@ -23,9 +23,8 @@ jobs:
 
       - name: Create Resource Group and Deploy Resources
         run: |
-           # az group create --name $AZURE_RESOURCEGROUP_NAME --location $LOCATION
-           # az deployment group create --resource-group $AZURE_RESOURCEGROUP_NAME --template-file './actions/bicep/storage.bicep'
-           az deployment group create --resource-group TestSandbox --template-file './actions/bicep/CreateRG.bicep' --parameters labName=AzureLabs1 vmName=AzureVMsTest1 userName=pjagan password=12$Abc#ca34
+           az group create --name $AZURE_RESOURCEGROUP_NAME --location $LOCATION
+           az deployment group create --resource-group $AZURE_RESOURCEGROUP_NAME --template-file './actions/bicep/CreateRG.bicep' --parameters labName=AzureLabs2 vmName=AzureVMsTest2 userName=pjagan password=12345@abc
 
 
        
