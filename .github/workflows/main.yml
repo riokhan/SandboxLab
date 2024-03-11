@@ -13,8 +13,8 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           auth-type: SERVICE_PRINCIPAL
-      - name: Create Resource Group
-        run: az group create --name TestSandbox --location eastus
+     // - name: Create Resource Group
+     //   run: az group create --name TestSandbox --location eastus
         
       - name: Deploy Bicep template
         run: az deployment sub create -l eastus -f CreateRG.bicep
