@@ -23,4 +23,4 @@ jobs:
  
     - name: Deploy Bicep template
       run: |
-        az group create --template-file CreateRG.bicep
+        New-AzResourceGroupDeployment -TemplateFile CreateRG.bicep
