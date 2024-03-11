@@ -16,7 +16,7 @@ jobs:
         run: az group create --name TestSandbox --location eastus
 
       - name: DeployBiceptemplates
-        run: az deployment sub create -l eastus -f 'CreateRG.bicep'
+        run: az deployment sub create -l eastus -f ./CreateRG.bicep
 
        
      
