@@ -1,5 +1,5 @@
 on: 
-      workflow_dispatch:
+   push:
  
 name: AzureLoginSample
 jobs:
@@ -15,8 +15,7 @@ jobs:
       - name: Create Resource Group
         run: az group create --name TestSandbox --location eastus
 
-      - name: DeployBiceptemplates
-        run: az deployment sub create -l eastus -f './actions/bicep/CreateRG.bicep'
+      
 
 
        
