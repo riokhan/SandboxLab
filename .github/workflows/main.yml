@@ -25,7 +25,7 @@ jobs:
         run: |
            # az group create --name $AZURE_RESOURCEGROUP_NAME --location $LOCATION
            # az deployment group create --resource-group $AZURE_RESOURCEGROUP_NAME --template-file './actions/bicep/storage.bicep'
-           az deployment group create --resource-group TestSandbox --template-file './actions/bicep/CreateRG.bicep' --parameters labName=AzureLabs vmName=AzureVMsTest userName=pjagan password=1234
+           az deployment group create --resource-group TestSandbox --template-file './actions/bicep/CreateRG.bicep' --parameters labName=AzureLabs vmName=AzureVMsTest userName=pjagan password=12$Abc#34
 
 
        
