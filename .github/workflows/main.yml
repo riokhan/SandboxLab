@@ -16,7 +16,8 @@ jobs:
         run: az group create --name TestSandbox --location eastus
 
       - name: DeployBiceptemplates
-        run: az deployment sub create -l eastus -f ../.github/workflows/CreateRG.bicep
+        run: az deployment sub create -l eastus -f ../../blob/main/.github/workflows/CreateRG.bicep
+
 
        
      
