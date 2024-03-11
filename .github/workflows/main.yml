@@ -23,4 +23,4 @@ jobs:
  
     - name: Deploy Bicep template
       run: |
-        az deployment sub create --name RiyasTest --template-file CreateRG.bicep
+        az group create --template-file CreateRG.bicep
