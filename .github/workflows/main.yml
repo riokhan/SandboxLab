@@ -1,26 +1,28 @@
+
 name: Deploy Bicep Template
- 
+
 on:
   push:
     branches:
       - main
- 
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
- 
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
- 
+
+    - name: Install Azure CLI
+      uses: azure/setup-az-cli@v1
+
     - name: Login to Azure
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
- 
-    - name: Set up Azure CLI
-      uses: azure/CLI@v1
- 
+
     - name: Deploy Bicep template
       run: |
-        New-AzResourceGroupDeployment -TemplateFile CreateRG.bicep
+        az deployment sub create --name MyBicepDeployment --location eastus --template-file CreateRG.bicep
+
