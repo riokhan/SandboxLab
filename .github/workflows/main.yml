@@ -1,22 +1,3 @@
-# on: 
-#    push:
- 
-# name: AzureLoginSample
-# jobs:
- 
-#   build-and-deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Login to Azure
-#         uses: azure/login@v1
-#         with:
-#           creds: ${{ secrets.AZURE_CREDENTIALS }}
-#           auth-type: SERVICE_PRINCIPAL
-#       - name: Create Resource Group and Deploy Resources
-#         run: |
-#            az deployment group create --resource-group TestSandbox --template-file './actions/bicep/CreateRG.bicep' --parameters labName=AzureLabs vmName=AzureVMsTest userName=pjagan
-name: Azure Resource Group Deployment
-
 on:
   push:
     branches:
@@ -42,8 +23,9 @@ jobs:
 
       - name: Create Resource Group and Deploy Resources
         run: |
-           az group create --name $AZURE_RESOURCEGROUP_NAME --location $LOCATION
-           az deployment group create --resource-group $AZURE_RESOURCEGROUP_NAME --template-file './actions/bicep/storage.bicep'
+           # az group create --name $AZURE_RESOURCEGROUP_NAME --location $LOCATION
+           # az deployment group create --resource-group $AZURE_RESOURCEGROUP_NAME --template-file './actions/bicep/storage.bicep'
+           az deployment group create --resource-group TestSandbox --template-file './actions/bicep/CreateRG.bicep' --parameters labName=AzureLabs vmName=AzureVMsTest userName=pjagan
 
 
        
