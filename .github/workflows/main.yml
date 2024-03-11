@@ -1,28 +1,24 @@
-
-name: Deploy Bicep Template
-
-on:
-  push:
-    branches:
-      - main
-
+on: 
+      workflow_dispatch:
+ 
+name: AzureLoginSample
 jobs:
-  deploy:
+ 
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Install Azure CLI
-      uses: azure/setup-az-cli@v1
-
-    - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Deploy Bicep template
-      run: |
-        az deployment sub create -l eastus -f CreateRG.bicep
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          auth-type: SERVICE_PRINCIPAL
+      - name: Create Resource Group
+        run: az group create --name TestSandbox --location eastus
+        
+      - name: Deploy Bicep template
+        run: az deployment sub create -l eastus -f CreateRG.bicep
 
