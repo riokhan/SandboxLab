@@ -15,7 +15,7 @@ jobs:
       - name: Create lab
         working-directory: '${{github.workspace}}/actions/bicep'
         run: |
-           az deployment group create --resource-group TestSandbox --template-file ./CreateRG.bicep --parameters labName=AzureLabs vmName=AzureVMsTest userName=pjagan
+           az deployment group create --resource-group TestSandbox --template-file CreateRG.bicep --parameters labName=AzureLabs vmName=AzureVMsTest userName=pjagan
 
 
 
